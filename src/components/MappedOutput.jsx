@@ -1,6 +1,4 @@
 const MappedOutput = ({ tableData }) => {
-  console.log("tableData", tableData);
-
   return (
     <div className="mt-10">
       <div className="flex justify-center mb-2 text-[#184B7F] text-lg font-medium">

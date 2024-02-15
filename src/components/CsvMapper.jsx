@@ -25,10 +25,6 @@ const CsvMapper = () => {
   } = useMappings();
   const [mappedTableData, setMappedTableData] = useState([]);
 
-  console.log("tableColumns", tableColumns);
-
-  console.log("mapping: ", mappings);
-
   useEffect(() => {
     if (!uploadedFile) {
       resetMapping();
