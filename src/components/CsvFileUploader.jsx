@@ -58,7 +58,7 @@ const CsvFileUploader = () => {
         ref={dropZone}
         className="w-full h-full flex flex-col justify-center items-center rounded-md border-[2px] border-dashed border-[#CCD9E5]"
       >
-        <FaFileUpload className="w-[100px] h-auto mb-[30px]" color="#0496ff" />
+        <FaFileUpload className="w-[80px] h-auto mb-[30px]" color="#0496ff" />
         <p className="text-lg font-normal text-[#184B7F]">
           Drop your file here, or{" "}
           <button

@@ -1,15 +1,17 @@
 import { useCallback, useState } from "react";
+import { getColumnNames } from "../db";
 
-const useMappings = (tableColumns) => {
-  const [mappings, setMappings] = useState(() =>
-    tableColumns.reduce(
-      (acc, col) => ({
-        ...acc,
-        [col]: { headers: [], action: null },
-      }),
-      {}
-    )
+const useMappings = () => {
+  const tableColumns = getColumnNames();
+
+  const initialMappings = tableColumns.reduce(
+    (acc, col) => ({
+      ...acc,
+      [col]: { headers: [], action: null },
+    }),
+    {}
   );
+  const [mappings, setMappings] = useState(initialMappings);
 
   const updateMapping = useCallback(
     (column, selectedOptions, action = null) => {
@@ -26,6 +28,10 @@ const useMappings = (tableColumns) => {
     []
   );
 
+  const resetMapping = () => {
+    setMappings(initialMappings);
+  };
+
   const getAllSelectedHeadersExceptCurrent = useCallback(
     (currentColumn) => {
       return Object.entries(mappings).reduce((acc, [col, { headers }]) => {
@@ -36,7 +42,13 @@ const useMappings = (tableColumns) => {
     [mappings]
   );
 
-  return { mappings, updateMapping, getAllSelectedHeadersExceptCurrent };
+  return {
+    tableColumns,
+    mappings,
+    updateMapping,
+    resetMapping,
+    getAllSelectedHeadersExceptCurrent,
+  };
 };
 
 export default useMappings;
